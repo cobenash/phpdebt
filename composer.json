@@ -23,7 +23,7 @@
         "squizlabs/php_codesniffer": "dev-api-friendly as 3.x-dev",
         "drupal/coder": "^8.3",
         "phpmd/phpmd": "dev-api-friendly",
-        "phploc/phploc": "^6.0"
+        "phploc/phploc": "^7.0"
     },
     "require-dev": {
         "clue/phar-composer": "^1.1"
