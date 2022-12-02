@@ -20,9 +20,10 @@ function phpMD($path, $type) {
     $ruleSetFactory = new RuleSetFactory();
     $phpmd = new PHPMD();
 
-    $report = $phpmd->runReport(
+    $report = $phpmd->processFiles(
         $path,
         $type,
+        $reports = [],
         $ruleSetFactory
     );
 

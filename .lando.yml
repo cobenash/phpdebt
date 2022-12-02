@@ -1,0 +1,7 @@
+name: phpdebt
+recipe: lamp
+config:
+  php: "8.1"
+  xdebug: true
+  config:
+    php: .vscode/php.ini
