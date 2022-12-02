@@ -12,11 +12,12 @@ use PHPMD\PHPMD;
 use PHPMD\Report;
 use PHPMD\RuleSetFactory;
 
-use SebastianBergmann\FinderFacade\FinderFacade;
 use SebastianBergmann\PHPLOC\Analyser;
 
 use PHP_CodeSniffer\Runner;
 use PHP_CodeSniffer\Config;
+
+use Symfony\Component\Finder\Finder;
 
 $code_faults = 0;
 $standards_faults = 0;
@@ -80,8 +81,15 @@ $faults = $runner->runPHPCS();
 print "phpcs DrupalPractice: " . $faults . "\n";
 $standards_faults += $faults;
 
-// Lines of Code.
-$files = (new FinderFacade([$path], [], ['*.php', '*.module', '*.install', '*.inc', '*.js', '*.scss'], []))->findFiles();
+// Lines of code.
+$finder = Finder::create();
+$finder->files()->in($path)->filter(static function (SplFileInfo $file) {
+    return $file->isDir() || \preg_match('/\.(php|module|install|inc|js|scss)$/', $file->getPathname());
+});
+$files = [];
+foreach ($finder as $file) {
+  $files[] = $file->getRealPath();
+}
 $count = (new Analyser)->countFiles($files, TRUE);
 $total_lines = $count['ncloc'];
 
