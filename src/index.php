@@ -71,13 +71,13 @@ $runner->config->extensions = [
 ];
 $runner->init();
 
-$faults = $runner->runPHPCS();
+$faults = $runner->run();
 print "phpcs Drupal: " . $faults . "\n";
 $standards_faults += $faults;
 
 $runner->config->standards = ['DrupalPractice'];
 $runner->init();
-$faults = $runner->runPHPCS();
+$faults = $runner->run();
 print "phpcs DrupalPractice: " . $faults . "\n";
 $standards_faults += $faults;
 

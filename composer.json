@@ -9,9 +9,15 @@
             "email": "smccabe@acromediainc.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/cobenash/PHP_CodeSniffer.git"
+        }
+    ],
     "require": {
-        "squizlabs/php_codesniffer": "^3.7",
-        "drupal/coder": "8.3.14",
+        "squizlabs/php_codesniffer": "dev-api-friendly as 3.x-dev",
+        "drupal/coder": "8.3.13",
         "phpmd/phpmd": "^2.13",
         "phploc/phploc": "^7.0",
         "symfony/finder": "^6.2"
